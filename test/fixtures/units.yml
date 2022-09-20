@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  landlord_id: MyString
+  property_id: 1
+  tenant_id: 1
+  price: MyString
+  lease_start_date: 2022-09-20
+  lease_end_date: 2022-09-20
+  sqft: MyString
+  bed: 1
+  bath: MyString
+  vacant: false
+
+two:
+  landlord_id: MyString
+  property_id: 1
+  tenant_id: 1
+  price: MyString
+  lease_start_date: 2022-09-20
+  lease_end_date: 2022-09-20
+  sqft: MyString
+  bed: 1
+  bath: MyString
+  vacant: false
