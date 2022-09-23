@@ -3,8 +3,9 @@ class CreateProperties < ActiveRecord::Migration[7.0]
     create_table :properties do |t|
       t.string :name
       t.string :address
-      t.integer :units
       t.integer :landlord_id
+      t.integer :unit_count
+      t.integer :units
 
       t.timestamps
     end
