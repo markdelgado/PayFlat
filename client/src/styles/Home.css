@@ -1,0 +1,28 @@
+
+
+
+#hero-container {
+    position: relative;
+    display: flex;
+    gap: 2%;
+    justify-content: center;
+}
+#hero-img{
+   width: 100%;
+  
+}
+#hero-container h2{
+    position: absolute;
+    color: red;
+    margin-top: 10%;
+    margin-left: 40%;
+
+}
+#hero-container button{
+    position: absolute;
+    width: 100px;
+    height:40px;
+    margin-top: 20%;
+    margin-left: 40%;
+    /* margin-top: 10%; */
+}
