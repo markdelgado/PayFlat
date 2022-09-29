@@ -5,6 +5,7 @@ import Navbar from './components/Navbar.js';
 import Home from './components/Home.js'
 import Dashboard from './components/Dashboard';
 import { useState, useEffect } from 'react';
+import TenantLanding from './components/TenantLanding';
 
 function App() {
 const [landlord, setLandlord]= useState('') 
@@ -40,6 +41,7 @@ useEffect(() => {
           <Route path='/' element={<Home/>}/>
           <Route path='' element={<payment/>}/>
           <Route path='/dashboard' element={<Dashboard landlord={landlord} property={property}/>}/>
+          <Route path='/tenant-landing' element={<TenantLanding />}/>
         </Routes>
       </Router>
     

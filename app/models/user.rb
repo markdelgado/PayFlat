@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many :landlords
-    has_many :tenants
+    has_one :landlord
+    has_one :tenant
 
 end
