@@ -5,10 +5,12 @@ import Navbar from './components/Navbar.js';
 import Home from './components/Home.js'
 import Dashboard from './components/Dashboard';
 import { useState, useEffect } from 'react';
+import Login from './components/Login';
 
 function App() {
 const [landlord, setLandlord]= useState('') 
 const [property, setProperty]= useState('')
+const [currentUser, setCurrentUser] = useState({})
 
 useEffect (() => {
   const getLandlord = async ()  => {
@@ -40,6 +42,8 @@ useEffect(() => {
           <Route path='/' element={<Home/>}/>
           <Route path='' element={<payment/>}/>
           <Route path='/dashboard' element={<Dashboard landlord={landlord} property={property}/>}/>
+          <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}/>
+          <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}/>
         </Routes>
       </Router>
     

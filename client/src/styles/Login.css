@@ -1,0 +1,14 @@
+#login-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    
+}
+
+#login-form{
+position: relative;
+left: 600px;
+
+
+}

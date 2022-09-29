@@ -19,7 +19,7 @@ const NavBar = () => {
                     <Nav.Link href="/payment">Pay</Nav.Link>
                     <Nav.Link href="/transaction">User transactions</Nav.Link>
                     <Nav.Link href="/dashboard">Landlord dashboard</Nav.Link>
-                    <Nav.Link id="signin" href="/sign-in">Sign In</Nav.Link>
+                    <Nav.Link id="signin" href="/login">Sign In</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>

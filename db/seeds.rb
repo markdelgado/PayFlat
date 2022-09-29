@@ -8,7 +8,7 @@
 puts "📃 Seeding data..."
 
 # landlord user
-user1 = User.create!(first_name: "mark", last_name: "delgado", email: "mark@gmail.com", password_digest: "password")
+user1 = User.create!(first_name: "mark", last_name: "delgado", email: "mark@gmail.com", password_digest:BCrypt::Password.create("password"))
 
 #tenant users
 user2 = User.create!(first_name: "mic", last_name: "l", email: "micl@gmail.com", password_digest: "password")

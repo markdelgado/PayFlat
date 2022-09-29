@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   resources :tenants
   resources :units
   resources :landlords
+
+  post '/login', to: 'sessions#create'
+  # post '/logout', to: ''
 end
