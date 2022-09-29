@@ -43,7 +43,7 @@ useEffect(() => {
           <Route path='' element={<payment/>}/>
           <Route path='/dashboard' element={<Dashboard landlord={landlord} property={property}/>}/>
           <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}/>
-          <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}/>
+         
         </Routes>
       </Router>
     
