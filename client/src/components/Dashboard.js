@@ -12,8 +12,9 @@ const Dashboard = ({landlord, property}) => {
             <h2>Welcome back {landlord.user?.first_name[0].toUpperCase() + landlord.user?.first_name.slice(1, landlord.user?.first_name.split('').length)}</h2>
             <p>{console.log("landlord", landlord)}</p>
             <div id='quick-numbers'>
+                <br></br>
             
-                <Table id='dashboard-table' striped bordered hover variant="dark">
+                <Table   id='dashboard-table' striped bordered hover variant="dark">
                     <thead>
                         <tr>
                             

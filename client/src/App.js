@@ -15,7 +15,7 @@ useEffect (() => {
   const getLandlord = async ()  => {
     let req = await fetch(`http://localhost:3000/landlords/1`)
     let res = await req.json()
-    //console.log("RES", res)
+    console.log("RES", res)
     setLandlord(res)
 
   }

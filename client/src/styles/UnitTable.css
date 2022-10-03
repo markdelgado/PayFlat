@@ -1,6 +1,10 @@
 #unit{
-    background-color: red;
+    /* background-color: red; */
     position: absolute;
-    top: 500px;
+    top: 100%;
     
-}
+    }
+
+ #prop-select{
+    width: 150px
+ }   

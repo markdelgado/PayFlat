@@ -5,14 +5,12 @@ class UsersController < ApplicationController
     end 
 
     def show
-        user = User.find_by(id: params[:id]).to_json(methods:[:landlord])
-        userT = User.find_by(id: params[:id]).to_json(methods:[:tenant])
+        @user = User.find_by(id: params[:id])
+        # .to_json(include:[:landlord])
+       
 
-        if userT.tenant.valid?
-            render json: userT
-        else
-            render json: user
-        end
+        render json: @user
+      
     end
 
 
