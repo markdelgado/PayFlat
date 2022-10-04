@@ -8,13 +8,13 @@
 puts "📃 Seeding data..."
 
 # landlord user
-user1 = User.create!(first_name: "mark", last_name: "delgado", email: "mark@gmail.com", password_digest: "password")
+user1 = User.create!(first_name: "mark", last_name: "delgado", email: "mark@gmail.com", password_digest: BCrypt::Password.create('password'))
 
 #tenant users
-user2 = User.create!(first_name: "mic", last_name: "l", email: "micl@gmail.com", password_digest: "password")
-user3 = User.create!(first_name: "user", last_name: "user", email: "user@gmail.com", password_digest: "password")
-user4 = User.create!(first_name: "Ant", last_name: "onio", email: "ant@gmail.com", password_digest: "password")
-user5 = User.create!(first_name: "zach", last_name: "zachy", email: "zach@gmail.com", password_digest: "password")
+user2 = User.create!(first_name: "mic", last_name: "l", email: "micl@gmail.com", password_digest: BCrypt::Password.create('password'))
+user3 = User.create!(first_name: "user", last_name: "user", email: "user@gmail.com", password_digest: BCrypt::Password.create('password'))
+user4 = User.create!(first_name: "Ant", last_name: "onio", email: "ant@gmail.com",password_digest: BCrypt::Password.create('password'))
+user5 = User.create!(first_name: "zach", last_name: "zachy", email: "zach@gmail.com", password_digest: BCrypt::Password.create('password'))
 
 
 

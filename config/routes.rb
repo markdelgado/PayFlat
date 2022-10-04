@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   resources :units
   resources :landlords
   resources :users
+
+  post '/login', to: 'users#login'
+  get '/profile', to: 'users#profile'
+
 end

@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import { useState, useEffect } from 'react';
 import TenantLanding from './components/TenantLanding';
 import AddProperty from './components/AddProperty'
+import Signin from './components/SignIn';
 
 function App() {
 const [landlord, setLandlord]= useState('') 
@@ -44,7 +45,7 @@ useEffect(() => {
           <Route path='/dashboard' element={<Dashboard landlord={landlord} property={property}/>}/>
           <Route path='/tenant-landing' element={<TenantLanding />}/>
           <Route path='/add-property' element={<AddProperty landlord={landlord} />}/>
-
+          <Route path='/sign-in' element={<Signin/>}/>
         </Routes>
       </Router>
     
