@@ -2,8 +2,15 @@
     /* background-color: red; */
     position: absolute;
     top: 100%;
+    width: 65%;
+    left:15%
     
+
+
+  
+      
     }
+
 
  #prop-select{
     width: 150px

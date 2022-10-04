@@ -6,6 +6,7 @@ import Home from './components/Home.js'
 import Dashboard from './components/Dashboard';
 import { useState, useEffect } from 'react';
 import TenantLanding from './components/TenantLanding';
+import AddProperty from './components/AddProperty'
 
 function App() {
 const [landlord, setLandlord]= useState('') 
@@ -15,7 +16,7 @@ useEffect (() => {
   const getLandlord = async ()  => {
     let req = await fetch(`http://localhost:3000/landlords/1`)
     let res = await req.json()
-    console.log("RES", res)
+    // console.log("RES", res)
     setLandlord(res)
 
   }
@@ -42,6 +43,8 @@ useEffect(() => {
           <Route path='' element={<payment/>}/>
           <Route path='/dashboard' element={<Dashboard landlord={landlord} property={property}/>}/>
           <Route path='/tenant-landing' element={<TenantLanding />}/>
+          <Route path='/add-property' element={<AddProperty landlord={landlord} />}/>
+
         </Routes>
       </Router>
     

@@ -28,9 +28,9 @@ t4 = Tenant.create!(user_id: user5.id)
 
 p1 = Property.create!(name: "sapphire building", address:"12 Main st Brewster, NY 10509",  landlord_id: l1.id, unit_count: 4 )
 
-unit1 = Unit.create!(property_id: p1.id, tenant_id:t1.id, price: "2000", sqft: "975", bed:2, bath:"1", vacant:false)
-unit2 = Unit.create!(property_id: p1.id, tenant_id:t2.id, price: "3500", sqft: "1575", bed:3, bath:"2", vacant:false)
-unit3 = Unit.create!(property_id: p1.id, tenant_id:t3.id, price: "2200", sqft: "1075", bed:2, bath:"1", vacant:false)
+unit1 = Unit.create!(property_id: p1.id, tenant_id:t1.id, price: "2500", sqft: "975", bed:2, bath:"1", vacant:false)
+unit2 = Unit.create!(property_id: p1.id, tenant_id:t2.id, price: "2500", sqft: "1575", bed:3, bath:"2", vacant:false)
+unit3 = Unit.create!(property_id: p1.id, tenant_id:t3.id, price: "2500", sqft: "1075", bed:2, bath:"1", vacant:false)
 unit4 = Unit.create!(property_id: p1.id, tenant_id:t4.id, price: "2500", sqft: "1375", bed:2, bath:"1", vacant:false)
 
 puts "✅ Done seeding"

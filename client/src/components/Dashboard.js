@@ -10,9 +10,9 @@ const Dashboard = ({landlord, property}) => {
     return (
         <div id="dashboard-container">
             <h2>Welcome back {landlord.user?.first_name[0].toUpperCase() + landlord.user?.first_name.slice(1, landlord.user?.first_name.split('').length)}</h2>
-            <p>{console.log("landlord", landlord)}</p>
+            {/* <p>{console.log("landlord", landlord)}</p> */}
+                <br/>
             <div id='quick-numbers'>
-                <br></br>
             
                 <Table   id='dashboard-table' striped bordered hover variant="dark">
                     <thead>
@@ -34,6 +34,7 @@ const Dashboard = ({landlord, property}) => {
                     </tbody>
                 </Table>
                 <UnitTable  property={property}/>
+                <button>Add Properties</button>
             </div>
 
         </div>
