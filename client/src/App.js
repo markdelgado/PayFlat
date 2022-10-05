@@ -8,11 +8,17 @@ import { useState, useEffect } from 'react';
 import TenantLanding from './components/TenantLanding';
 import AddProperty from './components/AddProperty'
 import Signin from './components/SignIn';
+import { useSelector, useDispatch} from 'react-redux';
+import { setValue } from './redux/user';
+import AddUnits from './components/AddUnits';
+
 
 function App() {
 const [landlord, setLandlord]= useState('') 
 const [property, setProperty]= useState('')
 
+const user = useSelector((state) => state.user.value)
+const dispatch = useDispatch()
 useEffect (() => {
   const getLandlord = async ()  => {
     let req = await fetch(`http://localhost:3000/landlords/1`)
@@ -23,6 +29,22 @@ useEffect (() => {
   }
   getLandlord()
 }, [])
+
+  useEffect(() => {
+    let token = localStorage.getItem("jwt");
+    if (token && !user.name) {
+      fetch("http://127.0.0.1:3000/profile", {
+        headers: {
+          token: token,
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch(setValue(data))
+        });
+    }
+  }, []);
 
 useEffect(() => {
   const getProperty = async () => {
@@ -46,6 +68,7 @@ useEffect(() => {
           <Route path='/tenant-landing' element={<TenantLanding />}/>
           <Route path='/add-property' element={<AddProperty landlord={landlord} />}/>
           <Route path='/sign-in' element={<Signin/>}/>
+          <Route path='add-units' element={<AddUnits/>}/>
         </Routes>
       </Router>
     

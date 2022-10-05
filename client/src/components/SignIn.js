@@ -2,11 +2,18 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { setValue } from '../redux/user';
 
 
 const Signin = () => {
-const [user, setUser] = useState({ name: "" });
+
+    const user = useSelector((state) => state.user.value)
+    const dispatch= useDispatch()  
+
+
 const [form, setForm] = useState({});
+
 
 let handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,39 +29,27 @@ let handleSubmit = async (e) => {
         })
 
        let res = await req.json() 
+       
      
         
     localStorage.setItem("jwt", res.token);
-      setUser({ 
-        ...user, name: res.user.first_name})
-   
+    console.log('test',res)
+    dispatch(setValue(res))
+//       setCurrentUser({ 
+//         ...currentUser, name: res.currentUser.first_name})
+//    console.log(currentUser)
     };
     let updateForm = (e) => {
         setForm(
             {...form, [e.target.name]: e.target.value, });
             console.log("form", form)
     }
-    useEffect(() => {
-        let token = localStorage.getItem("jwt");
-        if (token && !user.name) {
-            fetch("http://127.0.0.1:3000/profile", {
-                headers: {
-                    token: token,
-                    "Content-Type": "application/json",
-                },
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    setUser({
-                        name: data.first_name,
-                    });
-                });
-        }
-    }, []);
+    
 
     return (
         <Form onSubmit={handleSubmit}>
-            <h1>{!user.name ? "USER" : user.name}</h1>
+            <h1>{!user.first_name ? "USER" : user.first_name}</h1>
+            
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control 
@@ -83,12 +78,12 @@ let handleSubmit = async (e) => {
             </Button>
             <br></br>
             <br></br>
+            {console.log(user)}
             <Button
                 onClick={() => {
                     localStorage.clear();
-                    setUser({
-                        name: "",
-                    });
+                    dispatch(setValue({})) 
+                    
                 }}
             >
                 LOG OUT

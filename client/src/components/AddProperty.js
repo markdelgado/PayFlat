@@ -4,9 +4,11 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 function AddProperty({landlord}) {
+    const navigate = useNavigate()
 
     const [formData, setFormData]=useState({
         name: '',
@@ -15,9 +17,24 @@ function AddProperty({landlord}) {
         unit_count: ''
     })
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault()
-         console.log("FormData", formData)
+         console.log("FormData", formData);
+
+
+        let req = await fetch('http://localhost:3000/properties', {
+            method:'POST',
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+         let res = await req.json()
+        
+           navigate('/add-units')
+         
+
+         console.log(res)
 
     }
     // if (landlord) {

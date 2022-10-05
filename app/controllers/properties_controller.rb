@@ -15,8 +15,8 @@ class PropertiesController < ApplicationController
     end
 
     def create
-         token = request.headers["token"]
-        landlord_id = decode_token(token)
+        #  token = request.headers["token"]
+        # landlord_id = decode_token(token)
         property = Property.create!(prop_params)
         if property.valid?
             render json: property

@@ -23,7 +23,7 @@ const NavBar = () => {
                     <Nav.Link href="/dashboard">Landlord dashboard</Nav.Link>
                     {user ? 
                     <Nav.Link id="signin" href="/sign-in" element={<Signin user={user} />}>Sign In</Nav.Link> : 
-                        ''
+                        <p>Logout</p>
                         }
                 </Nav>
             </Container>
