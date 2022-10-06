@@ -12,7 +12,7 @@ import { useSelector, useDispatch} from 'react-redux';
 import { setValue } from './redux/user';
 import AddUnits from './components/AddUnits';
 import EditUnit from './components/EditUnit';
-
+import Footer from './components/Footer';
 
 function App() {
 const [landlord, setLandlord]= useState('') 
@@ -61,7 +61,7 @@ const dispatch = useDispatch()
           <Route path='/edit-unit' element={<EditUnit patchUnit={patchUnit} />}/>
         </Routes>
       </Router>
-    
+      {/* <Footer/> */}
     </div>
   );
 }

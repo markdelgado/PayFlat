@@ -33,9 +33,9 @@ const Dashboard = ({ property, setPatchUnit, setAddUnit , setSubmitProp}) => {
 
     return (
         <div id="dashboard-container">
-         
-            <h2>Welcome back {user?.first_name[0].toUpperCase() + user?.first_name.slice(1, user?.first_name.split('').length)}</h2>
             
+            <h2>Welcome, {user?.first_name[0].toUpperCase() + user?.first_name.slice(1, user?.first_name.split('').length)}</h2>
+                <img id="dashboard-img" src="./photos/dashboard.jpg" alt="hero-img" />
                 <br/>
 
             <div id='quick-numbers'>
@@ -79,9 +79,9 @@ const Dashboard = ({ property, setPatchUnit, setAddUnit , setSubmitProp}) => {
                 </Table>
                 <UnitTable setPatchUnit={setPatchUnit} landlord={landlord} setArrSum={setArrSum} setAddUnit={setAddUnit} setSubmitProp={setSubmitProp} />
 
-                {/* <Button onclick={() => navigate('/add-property') } >Add Properties</Button> */}
                 <Nav.Link href="/add-property">Add Property</Nav.Link>
 
+                {/* <Button id='add-prop-btn' variant='success' onclick={() => navigate('/add-property') } >Add Properties</Button> */}
             </div>
 
         </div>

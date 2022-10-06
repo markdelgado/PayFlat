@@ -26,3 +26,13 @@
 #overdue{
     color: rgb(235, 67, 67);
 }
+
+
+#dashboard-img{
+    position: fixed;
+    width:100vw;
+    top: -150px;
+    z-index: -1;
+    height: 75em;
+}
+

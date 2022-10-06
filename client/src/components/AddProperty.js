@@ -62,10 +62,10 @@ function AddProperty({landlord, setSubmitProp, submitProp}) {
         <div id='form-container'>
             {/* <p>{console.log("form", formData)}</p> */}
             {/* <p>{console.log("landlord", landlord.id)}</p> */}
+        <img id='wallpaper-img' src='../photos/wallpaper.webp'/>
         <Form id='form-prop' onSubmit={handleSubmit}>
             <div>Add A New Property</div>
-            <p>{`${submitProp.id}`}!!!!</p>
-
+            {/* <p>{`${submitProp.id}`}!!!!</p> */}
             <Form.Group className="mb-3" controlId="formGridAddress1">
                 <Form.Label>Property Name</Form.Label>
                 <Form.Control
@@ -93,8 +93,8 @@ function AddProperty({landlord, setSubmitProp, submitProp}) {
             value={formData.unit_count}
             onChange={handleChange}/>
            </Form.Group>
-
-            <Button variant="primary" type="submit">
+            <br></br>      
+            <Button variant="info" type="submit">
                 Submit
             </Button>
         </Form>

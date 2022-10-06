@@ -8,12 +8,15 @@
     justify-content: center;
 }
 #hero-img{
-   width: 100%;
+   width: 100vw;
+   
+   height: 85vh;
   
 }
 #hero-container h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: absolute;
-    color: red;
+    color: #FF0000;
     margin-top: 10%;
     margin-left: 40%;
 

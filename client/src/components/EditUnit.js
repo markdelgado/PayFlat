@@ -39,6 +39,7 @@ function EditUnit({ landlord, submitProp, patchUnit}) {
             body: JSON.stringify(formData)
         })
         let res = await req.json()
+        navigate('/dashboard')
 
 
 
@@ -69,8 +70,9 @@ function EditUnit({ landlord, submitProp, patchUnit}) {
         <div id='form-container'>
             <p>{console.log("form", formData)}</p>
             {/* <p>{console.log("landlord", landlord.id)}</p> */}
+            <img id='wallpaper-img' src='../photos/wallpaper.webp' />
             <Form id='form-prop' onSubmit={handleSubmit}>
-                <p>!!!!</p>
+              
                 <h2>Please provide the new information</h2>
 
 
@@ -199,11 +201,12 @@ function EditUnit({ landlord, submitProp, patchUnit}) {
                             </Button>
                         </div>
                     </Alert>
-                <Button variant="primary" type="submit" >
+                <br></br>
+                <Button variant="info" type="submit" >
                     Submit
                 </Button>
 
-                    {!show && <Button variant='primary' type='submit' onClick={() => setShow(true)}>Submit</Button>}
+                    {/* {!show && <Button variant='primary' type='submit' onClick={() => setShow(true)}>Submit</Button>} */}
                 
             </Form>
         </div>

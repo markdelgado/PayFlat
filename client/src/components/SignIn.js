@@ -4,16 +4,19 @@ import Form from 'react-bootstrap/Form';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { setValue } from '../redux/user';
+import { useNavigate } from 'react-router-dom';
+import '../styles/SignIn.css'
 
 
 const Signin = () => {
+
 
     const user = useSelector((state) => state.user.value)
     const dispatch= useDispatch()  
 
 
 const [form, setForm] = useState({});
-
+const navigate = useNavigate()
 
 let handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,6 +38,7 @@ let handleSubmit = async (e) => {
     localStorage.setItem("jwt", res.token);
     console.log('test',res)
     dispatch(setValue(res))
+    navigate('/')
 //       setCurrentUser({ 
 //         ...currentUser, name: res.currentUser.first_name})
 //    console.log(currentUser)
@@ -47,8 +51,12 @@ let handleSubmit = async (e) => {
     
 
     return (
+        <div id='form-container'>
+            {/* <img id='signin-background' src='./photos/signin.jpeg'/> */}
+            {/* <img id='signin-background' src='./photos/signin2.jpg'/> */}
+            <img id='signin-background' src='./photos/signin3.jpeg'/>
         <Form onSubmit={handleSubmit}>
-            <h1>{!user.first_name ? "USER" : user.first_name}</h1>
+
             
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
@@ -70,25 +78,16 @@ let handleSubmit = async (e) => {
                 placeholder="Password"
                 onChange={updateForm} />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
+           
+            <Button variant="info" type="submit" >
                 Submit
             </Button>
             <br></br>
             <br></br>
             {console.log(user)}
-            <Button
-                onClick={() => {
-                    localStorage.clear();
-                    dispatch(setValue({})) 
-                    
-                }}
-            >
-                LOG OUT
-            </Button>
+            
         </Form>
+        </div>
     );
 }
 

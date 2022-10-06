@@ -1,0 +1,48 @@
+#promotion2-container {
+
+    display: flex;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 100px;
+
+}
+
+#promotion2-img {
+    width: 50%;
+    height: 50%;
+    /* border-radius: 400px; */
+}
+
+#promotion-container,
+h2 {
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;  */
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+
+}
+
+#text-container {
+    margin-left: 80px;
+    margin-right: 20px;
+    margin-top: 100px;
+}
+
+#text-container h2 {
+
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+
+}
+
+#text-container p {
+    margin-top: 20px;
+    margin-right: 30%;
+    text-align: left;
+}
+
+#get-started {
+    margin-right: 425px;
+
+
+}
