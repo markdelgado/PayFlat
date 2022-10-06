@@ -7,14 +7,15 @@ import AddProperty from './AddProperty';
 import Nav from 'react-bootstrap/Nav'
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Badge from 'react-bootstrap/Badge';
 
 
-const Dashboard = ({ property}) => {
+const Dashboard = ({ property, setPatchUnit, setAddUnit , setSubmitProp}) => {
     const navigate = useNavigate()
     const [landlord, setLandlord]= useState('')
+    const [arrSum, setArrSum] = useState()
     const user = useSelector((state) => state.user.value)
     let arr = []
-    
     
     useEffect(() => {
         const getLandlord = async () => {
@@ -43,22 +44,40 @@ const Dashboard = ({ property}) => {
                     <thead>
                         <tr>
                             
-                            <th>Rent</th>
-                            <th>OverDue</th>
-                            <th>Recieved</th>
+                            <th>
+                                <h5>Rent</h5>
+                            </th>
+                            <th>
+                                <h5>OverDue</h5>
+                            </th><th>
+                                <h5>Recieved</h5>
+                            </th>
+                           
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             
-                            <td>$24,000</td>
-                            <td>$1500</td>
-                            <td>$22,500</td>
+                            <td>
+                                <h4>
+                                <Badge bg="info">${arrSum}</Badge>
+                        </h4>
+                                </td>
+                            <td >
+                                <h4>
+                                <Badge  bg="danger">$2500</Badge>
+                                </h4>
+                            </td>
+                            <td>
+                                <h4>
+                                    <Badge bg="success">$17500</Badge> 
+                                </h4>
+                            </td>
                         </tr>
                         
                     </tbody>
                 </Table>
-                <UnitTable  landlord={landlord}/>
+                <UnitTable setPatchUnit={setPatchUnit} landlord={landlord} setArrSum={setArrSum} setAddUnit={setAddUnit} setSubmitProp={setSubmitProp} />
 
                 {/* <Button onclick={() => navigate('/add-property') } >Add Properties</Button> */}
                 <Nav.Link href="/add-property">Add Property</Nav.Link>

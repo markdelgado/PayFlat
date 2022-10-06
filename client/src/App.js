@@ -11,24 +11,20 @@ import Signin from './components/SignIn';
 import { useSelector, useDispatch} from 'react-redux';
 import { setValue } from './redux/user';
 import AddUnits from './components/AddUnits';
+import EditUnit from './components/EditUnit';
 
 
 function App() {
 const [landlord, setLandlord]= useState('') 
 const [property, setProperty]= useState('')
+const [submitProp, setSubmitProp] = useState("{}")
+const [addUnit, setAddUnit] = useState('')
+
+const [patchUnit, setPatchUnit]= useState('')
 
 const user = useSelector((state) => state.user.value)
 const dispatch = useDispatch()
-useEffect (() => {
-  const getLandlord = async ()  => {
-    let req = await fetch(`http://localhost:3000/landlords/1`)
-    let res = await req.json()
-    // console.log("RES", res)
-    setLandlord(res)
 
-  }
-  getLandlord()
-}, [])
 
   useEffect(() => {
     let token = localStorage.getItem("jwt");
@@ -46,16 +42,9 @@ useEffect (() => {
     }
   }, []);
 
-useEffect(() => {
-  const getProperty = async () => {
-    let req = await fetch(`http://localhost:3000/properties/1`)
-    let res = await req.json()
-    setProperty(res)
-  }
-  getProperty()
-},[])
+//
 
-//console.log('property',property)
+
 
   return (
     <div className="App">
@@ -64,11 +53,12 @@ useEffect(() => {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='' element={<payment/>}/>
-          <Route path='/dashboard' element={<Dashboard landlord={landlord} property={property}/>}/>
+          <Route path='/dashboard' element={<Dashboard setPatchUnit={setPatchUnit} landlord={landlord} property={property} setAddUnit={setAddUnit} setSubmitProp={setSubmitProp} />}/>
           <Route path='/tenant-landing' element={<TenantLanding />}/>
-          <Route path='/add-property' element={<AddProperty landlord={landlord} />}/>
+          <Route path='/add-property' element={<AddProperty landlord={landlord} setSubmitProp={setSubmitProp}  submitProp={submitProp}/>}/>
           <Route path='/sign-in' element={<Signin/>}/>
-          <Route path='add-units' element={<AddUnits/>}/>
+          <Route path='/add-units' element={<AddUnits submitProp={submitProp} addUnit={addUnit}/>}/>
+          <Route path='/edit-unit' element={<EditUnit patchUnit={patchUnit} />}/>
         </Routes>
       </Router>
     

@@ -4,10 +4,7 @@
     top: 100%;
     width: 65%;
     left:15%
-    
-
-
-  
+   
       
     }
 
@@ -15,3 +12,10 @@
  #prop-select{
     width: 150px
  }   
+
+ #add-button{
+    display: flex;
+    margin-left:84.5%
+   
+   
+}

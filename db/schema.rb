@@ -48,6 +48,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_20_153431) do
   create_table "units", force: :cascade do |t|
     t.integer "property_id"
     t.integer "tenant_id"
+    t.string "tenant_name"
+    t.string "apartment_num"
+    t.string "tenant_phone"
     t.string "price"
     t.date "lease_start_date"
     t.date "lease_end_date"

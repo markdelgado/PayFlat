@@ -7,6 +7,9 @@ import '../styles/Navbar.css'
 import { useState } from 'react'
 import Signin from './SignIn'
 
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
 const NavBar = () => {
     const [user, setUser] = useState({ name: "" });
 

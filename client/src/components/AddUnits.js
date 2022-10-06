@@ -8,9 +8,9 @@ import Row from 'react-bootstrap/Row';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
-function AddUnits({ landlord }) {
+function AddUnits({ landlord, submitProp, addUnit}) {
     const navigate = useNavigate()
-
+console.log("test",submitProp)
     const [formData, setFormData] = useState({
         price: '',
         lease_start_date: '',
@@ -18,7 +18,11 @@ function AddUnits({ landlord }) {
         sqft: '',
         bed: '',
         bath: '',
-        vacant:''
+        vacant:false,
+        property_id: submitProp.id,
+        tenant_name: '',
+        tenant_phone: '',
+        apartment_num: ''
     })
 
     const handleSubmit = async (e) => {
@@ -26,7 +30,7 @@ function AddUnits({ landlord }) {
         console.log("FormData", formData);
 
 
-        let req = await fetch('http://localhost:3000/properties', {
+        let req = await fetch('http://localhost:3000/units', {
             method: 'POST',
             headers: {
                 "Content-type": "application/json"
@@ -35,26 +39,24 @@ function AddUnits({ landlord }) {
         })
         let res = await req.json()
 
-        navigate('/add-units')
+       
 
 
         console.log(res)
 
     }
-    // if (landlord) {
-    //     console.log("landlord test", landlord)
-    // }
+   
 
-    useEffect(() => {
-        if (landlord) {
-            console.log(landlord.id)
-            setFormData({
-                ...formData, landlord_id: landlord.id
-            })
+    // useEffect(() => {
+    //     if (landlord) {
+    //         console.log(landlord.id)
+    //         setFormData({
+    //             ...formData, landlord_id: landlord.id
+    //         })
 
-        }
+    //     }
 
-    }, [landlord])
+    // }, [landlord])
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -63,14 +65,17 @@ function AddUnits({ landlord }) {
 
     return (
         <div id='form-container'>
-            {/* <p>{console.log("form", formData)}</p> */}
+            <p>{console.log("form", formData)}</p> 
             {/* <p>{console.log("landlord", landlord.id)}</p> */}
             <Form id='form-prop' onSubmit={handleSubmit}>
+                <p>{submitProp.id}!!!!</p>
                 <div>Add Units to the recently added property</div>
 
 
 
                 <Form.Group className="mb-3" controlId="formGridAddress1">
+                    <Row>
+                        <Col>
                     <Form.Label>Price</Form.Label>
                     <Form.Control
                         placeholder="Amount"
@@ -78,6 +83,18 @@ function AddUnits({ landlord }) {
                         name='price'
                         value={formData.price}
                         onChange={handleChange} />
+                        </Col>
+
+                        <Col>
+                            <Form.Label>Apartment Number</Form.Label>
+                            <Form.Control
+                                placeholder="#"
+                                name='apartment_num'
+                                value={formData.apartment_num}
+                                onChange={handleChange} />
+                        </Col>
+
+                    </Row>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGridAddress2">
@@ -102,6 +119,16 @@ function AddUnits({ landlord }) {
                             onChange={handleChange}
                         />
                     </Col>
+                        <Col>
+                            <Form.Label>Sqft </Form.Label>
+                            <Form.Control
+                                name='sqft'
+                                placeholder=""
+                                type='number'
+                                value={formData.sqft}
+                                onChange={handleChange}
+                            />
+                        </Col>
                     </Row>
                 </Form.Group>
 
@@ -129,11 +156,31 @@ function AddUnits({ landlord }) {
                         </Col>
                     </Row>
                 </Form.Group>
-                <Form.Group>
-                    <Form.Label></Form.Label>
-                    <Form.Control
-                    type='true'></Form.Control>
-                </Form.Group>
+                    <br></br>
+                    <Form.Group>
+                    <Row>
+                        <Col>
+                        <Col>
+                        <Form.Label>Tenant Information</Form.Label>
+                            </Col>
+                        <Form.Control
+        
+                        placeholder='name'
+                        name='tenant_name'
+                        value={formData.tenant_name}
+                        onChange={handleChange}/>
+                        </Col>
+                
+                        <Col>
+                            <Form.Label>Phone Number</Form.Label>
+                        <Form.Control
+                            placeholder='(888)888-8888'
+                            name='tenant_phone'
+                            value={formData.tenant_phone}
+                            onChange={handleChange} />
+                        </Col>
+                    </Row>
+                    </Form.Group>
 
                 <Button variant="primary" type="submit">
                     Submit

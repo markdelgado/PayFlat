@@ -4,38 +4,50 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 import {Link, Routes, Route, useNavigate} from 'react-router-dom';
 import { useSelector } from 'react-redux'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 
 
 
 
-const UnitTable = ({property, landlord}) => {
+const UnitTable = ({ setPatchUnit, landlord, setArrSum, setAddUnit, setSubmitProp }) => {
 //console.log('property', property)
+const navigate = useNavigate()
 const [selected, setSelected]= useState({
-
 })
+
+let arr = []
+let sum = 0
+
+useEffect(() => {
+
+    
+    for (let i = 0; i < arr.length; i++){
+        sum += arr[i] 
+        setArrSum(sum)
+    }
+    
+},[arr])
+
+
 
 const user = useSelector((state) => state.user.value)
 
 
-const handleChange = (e) => {
-    e.preventDefault()
-    setSelected(e.target.value)
-}
-console.log("selected", selected)
    
-
-
     return(
         <div id='unit'>
-            <Form.Select value={selected} onChange={handleChange} aria-label="Default select example" id='prop-select'>
-                <option>Select Properties</option>
-                {/* <option value="1">{property.address}</option> */}
-               
-            </Form.Select>
+            
                 {landlord.properties?.map(property => {
-                    // console.log(property)
+                    
+                    const handleClick = (e) => {
+                        e.preventDefault()
+                        console.log('prop', property)
+                        setSubmitProp(property)
+                        navigate('/add-units')
+                    }
                     return(
                     
             <Table  striped bordered hover variant="dark">
@@ -47,22 +59,61 @@ console.log("selected", selected)
                         <th>Unit #</th>
                         <th>Price</th>
                         <th>Tenant</th>
-                        <th>Vacant</th>
+                        <th>Tenant Phone Number</th>
                         <th></th>
                     </tr>
                 </thead>
                  <tbody>
                    
-                      {property.units?.map(unit => (<tr> 
-                        <td>{unit.tenant_id}</td>
+                      {property.units?.map(unit => {
+                        arr.push(parseInt(unit.price))
+    
+                        const handleClick= (e) => {
+                            e.preventDefault()
+                            
+                            setPatchUnit(unit)
+                            navigate('/edit-unit')
+                            
+                        }
+                          const popover = (
+                              <Popover id="popover-basic">
+                                  <Popover.Header as="h3">Apartment Information</Popover.Header>
+                                  <Popover.Body>
+                                     <p>bed:{unit.bed}</p>
+                                     <p>bath:{unit.bath}</p>
+                                     <p>sqft:{unit.sqft}</p>
+                                     <p>Lease Start Date:{unit.lease_start_date}</p>
+                                     <p>Lease End Date:{unit.lease_end_date}</p>
+                                     <p>vacant:{unit.vacant.toString()}</p>
+                                  </Popover.Body>
+                              </Popover>
+                          );
+                          return( 
+                              <tr> 
+                        <td>{unit.apartment_num}</td>
                         <td>{unit.price}</td>
-                        <td>Tenant</td>
-                        <td>{unit.vacant.toString()}</td>
+                        <td>{unit.tenant_name}</td>
+                        {/* <td>{unit.vacant.toString()}</td> */}
+                        <td>{unit.tenant_phone}</td>
                         <td>
-                        <Button variant="outline-info">View</Button>
+                          {/* {console.log('unit', unit)} */}
+                        <Button  onClick={handleClick} variant="outline-info">Edit</Button>
+                         <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+                            <Button variant="outline-info">View</Button>
+                         </OverlayTrigger>
                         </td>
-                        {console.log('Unit', unit)}
-                     </tr>))} 
+                        {/* {console.log('Unit', unit)} */}
+                     </tr>
+                     
+                     )}
+                     )} 
+                     <tr>
+                    <th colSpan={5}>
+
+
+                     <Button id='add-button' variant='outline-info' onClick={handleClick}>Add Units</Button>
+                        </th>
+                     </tr>
                     
                     </tbody> 
                     

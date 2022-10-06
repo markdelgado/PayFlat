@@ -48,6 +48,6 @@ class UnitsController < ApplicationController
     end 
 
     def unit_params
-        params.permit(:property_id, :tenant_id, :price, :lease_start_date, :lease_end_date, :sqft, :bed, :bath, :vacant)
+        params.permit(:property_id, :tenant_id, :price, :lease_start_date, :lease_end_date, :sqft, :bed, :bath, :vacant, :tenant_name, :apartment_num, :tenant_phone)
     end
 end

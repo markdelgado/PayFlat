@@ -7,8 +7,9 @@ import Row from 'react-bootstrap/Row';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
-function AddProperty({landlord}) {
+function AddProperty({landlord, setSubmitProp, submitProp}) {
     const navigate = useNavigate()
+  
 
     const [formData, setFormData]=useState({
         name: '',
@@ -31,10 +32,10 @@ function AddProperty({landlord}) {
         })
          let res = await req.json()
         
-           navigate('/add-units')
-         
-
-         console.log(res)
+         setSubmitProp(res)
+         navigate('/add-units' )
+        console.log('res', res)
+        
 
     }
     // if (landlord) {
@@ -43,7 +44,7 @@ function AddProperty({landlord}) {
 
     useEffect(() => {
         if (landlord){
-            console.log(landlord.id)
+            //console.log(landlord.id)
             setFormData({
                 ...formData, landlord_id: landlord.id
             })
@@ -63,7 +64,7 @@ function AddProperty({landlord}) {
             {/* <p>{console.log("landlord", landlord.id)}</p> */}
         <Form id='form-prop' onSubmit={handleSubmit}>
             <div>Add A New Property</div>
-           
+            <p>{`${submitProp.id}`}!!!!</p>
 
             <Form.Group className="mb-3" controlId="formGridAddress1">
                 <Form.Label>Property Name</Form.Label>
