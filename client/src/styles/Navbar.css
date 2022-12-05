@@ -2,3 +2,9 @@
 #Navbar-container{
     height: 60px;
 }
+
+
+#sign-in-div {
+    position: absolute;
+    right: 5%;
+}

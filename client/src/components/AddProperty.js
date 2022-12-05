@@ -5,16 +5,19 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 function AddProperty({landlord, setSubmitProp, submitProp}) {
+    const user = useSelector((state) => state.user.value)
+
     const navigate = useNavigate()
   
-
+    console.log('user', user)
     const [formData, setFormData]=useState({
         name: '',
         address: '',
-        landlord_id: '',
+        landlord_id: user.landlord.id,
         unit_count: ''
     })
 
