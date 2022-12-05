@@ -79,8 +79,8 @@ const Dashboard = ({ property, setPatchUnit, setAddUnit , setSubmitProp}) => {
                 </Table>
                 <UnitTable setPatchUnit={setPatchUnit} landlord={landlord} setArrSum={setArrSum} setAddUnit={setAddUnit} setSubmitProp={setSubmitProp} />
 
-                <Nav.Link href="/add-property">Add Property</Nav.Link>
-                {console.log(user, 'user')}
+                {/* <Nav.Link href="/add-property">Add Property</Nav.Link> */}
+
 
                 <Button id='add-prop-btn' variant='outline-info' onClick={({user}) => navigate('/add-property') } >Add Properties</Button>
                 {/* <Button id='add-prop-btn' variant='success' onClick={() => console.log(user) } >Add Properties</Button> */}

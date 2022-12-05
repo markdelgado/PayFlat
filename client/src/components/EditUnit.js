@@ -8,7 +8,7 @@ import Alert from 'react-bootstrap/Alert';
 
 
 function EditUnit({ landlord, submitProp, patchUnit}) {
-    console.log("patchUnit", patchUnit)
+    // console.log("patchUnit", patchUnit)
     const navigate = useNavigate()
     const [show, setShow] = useState(false);
 

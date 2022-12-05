@@ -68,13 +68,11 @@ console.log("test",submitProp)
         <div id='form-container'>
             <p>{console.log("form", formData)}</p> 
             {/* <p>{console.log("landlord", landlord.id)}</p> */}
+            <img id='wallpaper-img' src='../photos/wallpaper.webp' />
             <Form id='form-prop' onSubmit={handleSubmit}>
                 {/* <p>{submitProp.id}!!!!</p> */}
                 <p>Please Add Unit Information</p>
-                <div>Add Units to the recently added property</div>
-
-
-
+                {/* <div>Add Units to the recently added property</div> */}
                 <Form.Group className="mb-3" controlId="formGridAddress1">
                     <Row>
                         <Col>
@@ -183,8 +181,9 @@ console.log("test",submitProp)
                         </Col>
                     </Row>
                     </Form.Group>
+                    <br/>
 
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" >
                     Submit
                 </Button>
             </Form>
