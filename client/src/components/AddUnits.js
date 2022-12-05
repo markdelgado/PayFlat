@@ -38,6 +38,7 @@ console.log("test",submitProp)
             body: JSON.stringify(formData)
         })
         let res = await req.json()
+        navigate('/dashboard')
 
        
 
@@ -68,7 +69,8 @@ console.log("test",submitProp)
             <p>{console.log("form", formData)}</p> 
             {/* <p>{console.log("landlord", landlord.id)}</p> */}
             <Form id='form-prop' onSubmit={handleSubmit}>
-                <p>{submitProp.id}!!!!</p>
+                {/* <p>{submitProp.id}!!!!</p> */}
+                <p>Please Add Unit Information</p>
                 <div>Add Units to the recently added property</div>
 
 
