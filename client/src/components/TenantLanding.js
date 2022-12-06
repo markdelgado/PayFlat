@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import {Card} from 'react-bootstrap'
 import  '../styles/TenantLanding.css'
+
 
 const TenantLanding = () => {
     const [tenant, setTenant]= useState('')
@@ -16,27 +17,65 @@ const TenantLanding = () => {
         }
         getTenant()
     },[])
-     console.log("tenant",tenant)
-    //  console.log("test", tenant.user.first_name)
 
     return(
         <div>
-            {/* <h2>Welcome Back {tenant.user?.first_name[0].toUpperCase() + tenant.user?.first_name.slice(1, tenant.user?.first_name.split('').length)}</h2>
-            <p>Rent Due ${tenant.unit?.price}</p> */}
-            {/* <a href="https://buy.stripe.com/test_00g6p9133eiO0XS6oo" target="_blank" rel="noreferrer">
-                <button>My custom button</button>
-                </a> */}
-            {/* <button >Pay</button> */}
+           
+            <img id='wallpaper-img' src='../photos/wallpaper.webp' />
             <Card className="text-center">
-                <Card.Header>Welcome Back {tenant.user?.first_name[0].toUpperCase() + tenant.user?.first_name.slice(1, tenant.user?.first_name.split('').length)}</Card.Header>
+                <Card.Header className='header-tenant'>
+                    Welcome Back {tenant.user?.first_name[0].toUpperCase() + tenant.user?.first_name.slice(1, tenant.user?.first_name.split('').length)}
+                </Card.Header>
                 <Card.Body>
-                    <Card.Title>Rent Due ${tenant.unit?.price}</Card.Title>
+                    <Card.Title>Rent Due: ${tenant.unit?.price}</Card.Title>
                     <Card.Text>
-                        With supporting text below as a natural lead-in to additional content.
+                        Not including upcoming charges and credits
                     </Card.Text>
                     <Button variant="primary" href='https://buy.stripe.com/test_00g6p9133eiO0XS6oo'>Pay</Button>
                 </Card.Body>
-                {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
+
+            </Card>
+                <br/>
+            <Card className="text-center">
+                
+                <Card.Body className='header-transactions'>
+                   Acccount Transactions
+                </Card.Body>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                           
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            
+                            <td>09-01-2022</td>
+                            <td>Rent</td>
+                            <td>$2500</td>
+                        </tr>
+                        <tr>
+                           
+                            <td>08-01-2022</td>
+                            <td>Rent</td>
+                            <td>$2500</td>
+                        </tr>
+                        <tr>
+                            <td>07-01-2022</td>
+                            <td>Credit</td>
+                            <td>$500</td>
+                        </tr>
+
+                        <tr>
+                            <td>06-01-2022</td>
+                            <td>Security deopsit</td>
+                            <td>$2500</td>
+                        </tr>
+                    </tbody>
+                </Table>
             </Card>
           
 

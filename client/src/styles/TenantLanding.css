@@ -1,0 +1,20 @@
+#wallpaper-img {
+    
+    position: absolute;
+
+}
+
+.text-center {
+    margin-top: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+.header-tenant{
+    font-size: 30px;
+}
+.header-transactions{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+}
